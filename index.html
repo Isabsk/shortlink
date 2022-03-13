@@ -1,0 +1,174 @@
+<!DOCTYPE html> 
+
+<!--ng-app directive tells AngularJS that myApp 
+
+    is the root element of the application --> 
+
+<html ng-app="myApp"> 
+
+    <head> 
+
+        <!--import the angularjs libraries--> 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"> 
+
+      </script> 
+
+        <script src= 
+
+"https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"> 
+
+      </script> 
+
+    </head> 
+
+    <body> 
+
+        <!--hg-template indicates the pages  
+
+            that get loaded as per requirement--> 
+
+        <script type="text/ng-template" 
+
+                id="first.html"> 
+
+            <h1>First Page</h1> 
+
+            <h2 style="color:green"> 
+
+                Welcome to GeeksForGeeks 
+
+            </h2> 
+
+            <h3>{{message}}</h3> 
+
+        </script> 
+
+        <script type="text/ng-template" 
+
+                id="second.html"> 
+
+            <h1>Second Page</h1> 
+
+            <h2 style="color:green"> 
+
+                Start Learning With GFG 
+
+            </h2> 
+
+            <h3>{{message}}</h3> 
+
+        </script> 
+
+        <script type="text/ng-template" 
+
+                id="third.html"> 
+
+            <h1>Third Page</h1> 
+
+            <h2 style="color:green"> 
+
+                Know about us 
+
+            </h2> 
+
+            <h3>{{message}}</h3> 
+
+        </script> 
+
+        <!--hyperlinks to load different  
+
+              pages dynamically--> 
+
+        <a href="#/">First</a> 
+
+        <a href="#/second">Second</a> 
+
+        <a href="#/third">Third</a> 
+
+        <!--ng-view includes the rendered template of 
+
+            the current route into the main page--> 
+
+        <div ng-view></div> 
+
+        <script> 
+
+            var app = angular.module('myApp', []); 
+
+            var app = angular.module('myApp', ['ngRoute']); 
+
+            app.config(function($routeProvider) { 
+
+            $routeProvider 
+
+  
+
+            .when('/', { 
+
+            templateUrl : 'first.html', 
+
+            controller : 'FirstController' 
+
+            }) 
+
+  
+
+            .when('/second', { 
+
+            templateUrl : 'second.html', 
+
+            controller : 'SecondController' 
+
+            }) 
+
+  
+
+            .when('/third', { 
+
+            templateUrl : 'third.html', 
+
+            controller : 'ThirdController' 
+
+            }) 
+
+  
+
+            .otherwise({redirectTo: '/'}); 
+
+            }); 
+
+  
+
+        
+
+  
+
+            app.controller('FirstController', function($scope) { 
+
+            $scope.message = 'Hello from FirstController'; 
+
+            }); 
+
+  
+
+            app.controller('SecondController', function($scope) { 
+
+            $scope.message = 'Hello from SecondController'; 
+
+            }); 
+
+  
+
+            app.controller('ThirdController', function($scope) { 
+
+            $scope.message = 'Hello from ThirdController'; 
+
+            }); 
+
+        </script> 
+
+    </body> 
+
+</html> 
+
